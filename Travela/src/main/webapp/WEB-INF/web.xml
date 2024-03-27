@@ -4,7 +4,7 @@
     <description></description>
     <display-name>MainServlet</display-name>
     <servlet-name>MainServlet</servlet-name>
-    <servlet-class>Servlet.MainServlet</servlet-class>
+    <servlet-class>com.travela.servlet.MainServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>MainServlet</servlet-name>

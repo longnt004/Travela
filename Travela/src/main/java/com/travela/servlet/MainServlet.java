@@ -1,4 +1,4 @@
-package Servlet;
+package com.travela.servlet;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
