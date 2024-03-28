@@ -32,6 +32,9 @@
 			<c:when test="${requestScope.TourPage}">
 				<%@ include file="./page/TourPage.jsp"%>
 			</c:when>
+			<c:when test="${requestScope.ProfilePage}">
+				<%@ include file="./page/ProfilePage.jsp"%>
+			</c:when>
 		</c:choose>
 		<!-- Container End -->
 

@@ -24,7 +24,7 @@
 						class="fa fa-user me-2"></i>Register</small></a> <a href="/Travela/login"><small
 					class="me-3 text-light"><i class="fa fa-sign-in-alt me-2"></i>Login</small></a>
 				<div class="dropdown">
-					<a href="#" class="dropdown-toggle text-light"
+					<a href="/Travela/profile" class="dropdown-toggle text-light"
 						data-bs-toggle="dropdown"><small><i
 							class="fa fa-home me-2"></i> My Dashboard</small></a>
 					<div class="dropdown-menu rounded">

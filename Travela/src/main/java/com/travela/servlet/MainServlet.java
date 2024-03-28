@@ -11,7 +11,7 @@ import java.io.IOException;
  * Servlet implementation class MainServlet
  */
 
-@WebServlet({ "/rooms", "/tour", "/roomdetails","/login","/register" })
+@WebServlet({"/rooms", "/tour", "/roomdetails","/login","/register", "/profile"})
 public class MainServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -42,7 +42,9 @@ public class MainServlet extends HttpServlet {
 			request.setAttribute("LoginPage", true);
 		} else if(URI.contains("register")){
 			request.setAttribute("RegisterPage", true);
-		}else {
+		} else if (URI.contains("profile")){
+			request.setAttribute("ProfilePage", true);
+		} else {
 			request.setAttribute("HomePage", true);
 		}
 		request.getRequestDispatcher("/views/index.jsp").forward(request, response);

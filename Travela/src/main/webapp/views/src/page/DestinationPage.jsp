@@ -6,4 +6,4 @@
 	<jsp:param name="breadcrumb" value="Rooms" />
 </jsp:include>
 
-<%@ include file="/views/src/component/Destination.jsp" %>
+<%@ include file="/views/src/component/Destination.jsp"%>

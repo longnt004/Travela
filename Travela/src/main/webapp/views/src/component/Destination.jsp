@@ -38,8 +38,8 @@
 									src="./views/src/img/sgr3.jpg" alt="" />
 								<div class="destination-overlay p-4">
 									<h4 class="text-white mb-2 mt-3">Single Room</h4>
-									<a href="/Travela/roomdetails" class="btn-hover text-white">View All<i
-										class="fa fa-arrow-right ms-2"></i>
+									<a href="/Travela/roomdetails" class="btn-hover text-white">View
+										All<i class="fa fa-arrow-right ms-2"></i>
 									</a>
 								</div>
 								<div class="search-icon">
@@ -55,8 +55,8 @@
 									src="./views/src/img/sgr3.jpg" alt="" />
 								<div class="destination-overlay p-4">
 									<h4 class="text-white mb-2 mt-3">Single Room</h4>
-									<a href="/Travela/roomdetails" class="btn-hover text-white">View All<i
-										class="fa fa-arrow-right ms-2"></i>
+									<a href="/Travela/roomdetails" class="btn-hover text-white">View
+										All<i class="fa fa-arrow-right ms-2"></i>
 									</a>
 								</div>
 								<div class="search-icon">
@@ -71,8 +71,8 @@
 									src="./views/src/img/sgr3.jpg" alt="" />
 								<div class="destination-overlay p-4">
 									<h4 class="text-white mb-2 mt-3">Single Room</h4>
-									<a href="/Travela/roomdetails" class="btn-hover text-white">View All<i
-										class="fa fa-arrow-right ms-2"></i>
+									<a href="/Travela/roomdetails" class="btn-hover text-white">View
+										All<i class="fa fa-arrow-right ms-2"></i>
 									</a>
 								</div>
 								<div class="search-icon">
@@ -87,8 +87,8 @@
 									src="./views/src/img/sgr3.jpg" alt="" />
 								<div class="destination-overlay p-4">
 									<h4 class="text-white mb-2 mt-3">Single Room</h4>
-									<a href="/Travela/roomdetails" class="btn-hover text-white">View All<i
-										class="fa fa-arrow-right ms-2"></i>
+									<a href="/Travela/roomdetails" class="btn-hover text-white">View
+										All<i class="fa fa-arrow-right ms-2"></i>
 									</a>
 								</div>
 								<div class="search-icon">
@@ -107,8 +107,8 @@
 									src="./views/src/img/double-room-superior-2.jpg" alt="" />
 								<div class="destination-overlay p-4">
 									<h4 class="text-white mb-2 mt-3">Double Room</h4>
-									<a href="/Travela/roomdetails" class="btn-hover text-white">View All Place <i
-										class="fa fa-arrow-right ms-2"></i>
+									<a href="/Travela/roomdetails" class="btn-hover text-white">View
+										All Place <i class="fa fa-arrow-right ms-2"></i>
 									</a>
 								</div>
 								<div class="search-icon">
@@ -124,8 +124,8 @@
 									src="./views/src/img/double-room-superior-2.jpg" alt="" />
 								<div class="destination-overlay p-4">
 									<h4 class="text-white mb-2 mt-3">Double Room</h4>
-									<a href="/Travela/roomdetails" class="btn-hover text-white">View All Place <i
-										class="fa fa-arrow-right ms-2"></i>
+									<a href="/Travela/roomdetails" class="btn-hover text-white">View
+										All Place <i class="fa fa-arrow-right ms-2"></i>
 									</a>
 								</div>
 								<div class="search-icon">
@@ -141,8 +141,8 @@
 									src="./views/src/img/double-room-superior-2.jpg" alt="" />
 								<div class="destination-overlay p-4">
 									<h4 class="text-white mb-2 mt-3">Double Room</h4>
-									<a href="/Travela/roomdetails" class="btn-hover text-white">View All Place <i
-										class="fa fa-arrow-right ms-2"></i>
+									<a href="/Travela/roomdetails" class="btn-hover text-white">View
+										All Place <i class="fa fa-arrow-right ms-2"></i>
 									</a>
 								</div>
 								<div class="search-icon">
@@ -158,8 +158,8 @@
 									src="./views/src/img/double-room-superior-2.jpg" alt="" />
 								<div class="destination-overlay p-4">
 									<h4 class="text-white mb-2 mt-3">Double Room</h4>
-									<a href="/Travela/roomdetails" class="btn-hover text-white">View All Place <i
-										class="fa fa-arrow-right ms-2"></i>
+									<a href="/Travela/roomdetails" class="btn-hover text-white">View
+										All Place <i class="fa fa-arrow-right ms-2"></i>
 									</a>
 								</div>
 								<div class="search-icon">
@@ -179,8 +179,8 @@
 									src="./views/src/img/twin.jpg" alt="" />
 								<div class="destination-overlay p-4">
 									<h4 class="text-white mb-2 mt-3">Twin Room</h4>
-									<a href="/Travela/roomdetails" class="btn-hover text-white">View All Place <i
-										class="fa fa-arrow-right ms-2"></i>
+									<a href="/Travela/roomdetails" class="btn-hover text-white">View
+										All Place <i class="fa fa-arrow-right ms-2"></i>
 									</a>
 								</div>
 								<div class="search-icon">
@@ -197,8 +197,8 @@
 									src="./views/src/img/twin.jpg" alt="" />
 								<div class="destination-overlay p-4">
 									<h4 class="text-white mb-2 mt-3">Twin Room</h4>
-									<a href="/Travela/roomdetails" class="btn-hover text-white">View All Place <i
-										class="fa fa-arrow-right ms-2"></i>
+									<a href="/Travela/roomdetails" class="btn-hover text-white">View
+										All Place <i class="fa fa-arrow-right ms-2"></i>
 									</a>
 								</div>
 								<div class="search-icon">
@@ -214,8 +214,8 @@
 									src="./views/src/img/twin.jpg" alt="" />
 								<div class="destination-overlay p-4">
 									<h4 class="text-white mb-2 mt-3">Twin Room</h4>
-									<a href="/Travela/roomdetails" class="btn-hover text-white">View All Place <i
-										class="fa fa-arrow-right ms-2"></i>
+									<a href="/Travela/roomdetails" class="btn-hover text-white">View
+										All Place <i class="fa fa-arrow-right ms-2"></i>
 									</a>
 								</div>
 								<div class="search-icon">
@@ -231,8 +231,8 @@
 									src="./views/src/img/twin.jpg" alt="" />
 								<div class="destination-overlay p-4">
 									<h4 class="text-white mb-2 mt-3">Twin Room</h4>
-									<a href="/Travela/roomdetails" class="btn-hover text-white">View All Place <i
-										class="fa fa-arrow-right ms-2"></i>
+									<a href="/Travela/roomdetails" class="btn-hover text-white">View
+										All Place <i class="fa fa-arrow-right ms-2"></i>
 									</a>
 								</div>
 								<div class="search-icon">
@@ -248,12 +248,12 @@
 					<div class="row g-4">
 						<div class="col-lg-6">
 							<div class="destination-img">
-								<img class="img-fluid rounded w-100" src="./views/src/img/suite.jpg"
-									alt="" />
+								<img class="img-fluid rounded w-100"
+									src="./views/src/img/suite.jpg" alt="" />
 								<div class="destination-overlay p-4">
 									<h4 class="text-white mb-2 mt-3">Suite Room</h4>
-									<a href="/Travela/roomdetails" class="btn-hover text-white">View All Place <i
-										class="fa fa-arrow-right ms-2"></i>
+									<a href="/Travela/roomdetails" class="btn-hover text-white">View
+										All Place <i class="fa fa-arrow-right ms-2"></i>
 									</a>
 								</div>
 								<div class="search-icon">
@@ -265,12 +265,12 @@
 						</div>
 						<div class="col-lg-6">
 							<div class="destination-img">
-								<img class="img-fluid rounded w-100" src="./views/src/img/suite.jpg"
-									alt="" />
+								<img class="img-fluid rounded w-100"
+									src="./views/src/img/suite.jpg" alt="" />
 								<div class="destination-overlay p-4">
 									<h4 class="text-white mb-2 mt-3">Suite Room</h4>
-									<a href="/Travela/roomdetails" class="btn-hover text-white">View All Place <i
-										class="fa fa-arrow-right ms-2"></i>
+									<a href="/Travela/roomdetails" class="btn-hover text-white">View
+										All Place <i class="fa fa-arrow-right ms-2"></i>
 									</a>
 								</div>
 								<div class="search-icon">
@@ -282,12 +282,12 @@
 						</div>
 						<div class="col-lg-6">
 							<div class="destination-img">
-								<img class="img-fluid rounded w-100" src="./views/src/img/suite.jpg"
-									alt="" />
+								<img class="img-fluid rounded w-100"
+									src="./views/src/img/suite.jpg" alt="" />
 								<div class="destination-overlay p-4">
 									<h4 class="text-white mb-2 mt-3">Suite Room</h4>
-									<a href="/Travela/roomdetails" class="btn-hover text-white">View All Place <i
-										class="fa fa-arrow-right ms-2"></i>
+									<a href="/Travela/roomdetails" class="btn-hover text-white">View
+										All Place <i class="fa fa-arrow-right ms-2"></i>
 									</a>
 								</div>
 								<div class="search-icon">
@@ -299,12 +299,12 @@
 						</div>
 						<div class="col-lg-6">
 							<div class="destination-img">
-								<img class="img-fluid rounded w-100" src="./views/src/img/suite.jpg"
-									alt="" />
+								<img class="img-fluid rounded w-100"
+									src="./views/src/img/suite.jpg" alt="" />
 								<div class="destination-overlay p-4">
 									<h4 class="text-white mb-2 mt-3">Suite Room</h4>
-									<a href="/Travela/roomdetails" class="btn-hover text-white">View All Place <i
-										class="fa fa-arrow-right ms-2"></i>
+									<a href="/Travela/roomdetails" class="btn-hover text-white">View
+										All Place <i class="fa fa-arrow-right ms-2"></i>
 									</a>
 								</div>
 								<div class="search-icon">

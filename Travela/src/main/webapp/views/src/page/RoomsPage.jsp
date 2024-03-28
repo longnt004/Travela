@@ -12,7 +12,8 @@
 			<jsp:param name="imgURL" value="./views/src/img/sgr3.jpg" />
 			<jsp:param name="title" value="Single Room" />
 			<jsp:param name="price" value="1500" />
-			<jsp:param name="description" value="Single rooms are assigned to one people;
+			<jsp:param name="description"
+				value="Single rooms are assigned to one people;
 							expect one double bed, or two twin beds depending on the hotel." />
 		</jsp:include>
 	</div>
