@@ -4832,11 +4832,10 @@ textarea.form-control-lg {
 	color: #0a0a0f
 }
 
-@
-keyframes progress-bar-stripes { 0%{
-	background-position-x: 1rem
-}
-
+@keyframes progress-bar-stripes { 
+	0%{
+		background-position-x: 1rem
+	}
 }
 .progress {
 	display: flex;
@@ -6160,21 +6159,15 @@ keyframes spinner-border {
 	border-width: .2em
 }
 
-@
-keyframes spinner-grow { 0%{
-	transform: scale(0)
-}
+@keyframes spinner-grow { 
+	0%{
+		transform: scale(0)
+	}
 
-50
-%
-{
-opacity
-:
-1;
-transform
-:
-none
-}
+	50%{
+		opacity: 1;
+		transform:none
+	}
 }
 .spinner-grow {
 	display: inline-block;

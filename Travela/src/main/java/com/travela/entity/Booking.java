@@ -3,6 +3,7 @@ package com.travela.entity;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -33,15 +34,14 @@ public class Booking implements Serializable {
 
 	private String status;
 
-	//bi-directional many-to-one association to Room
-	@ManyToOne
-	@JoinColumn(name="room_id")
-	private Room room;
-
 	//bi-directional many-to-one association to User
 	@ManyToOne
 	@JoinColumn(name="user_id")
 	private User user;
+
+	//bi-directional many-to-one association to BookingDetail
+	@OneToMany(mappedBy="booking")
+	private List<BookingDetail> bookingDetails;
 
 	public Booking() {
 	}
@@ -86,20 +86,34 @@ public class Booking implements Serializable {
 		this.status = status;
 	}
 
-	public Room getRoom() {
-		return this.room;
-	}
-
-	public void setRoom(Room room) {
-		this.room = room;
-	}
-
 	public User getUser() {
 		return this.user;
 	}
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public List<BookingDetail> getBookingDetails() {
+		return this.bookingDetails;
+	}
+
+	public void setBookingDetails(List<BookingDetail> bookingDetails) {
+		this.bookingDetails = bookingDetails;
+	}
+
+	public BookingDetail addBookingDetail(BookingDetail bookingDetail) {
+		getBookingDetails().add(bookingDetail);
+		bookingDetail.setBooking(this);
+
+		return bookingDetail;
+	}
+
+	public BookingDetail removeBookingDetail(BookingDetail bookingDetail) {
+		getBookingDetails().remove(bookingDetail);
+		bookingDetail.setBooking(null);
+
+		return bookingDetail;
 	}
 
 }

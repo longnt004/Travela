@@ -34,13 +34,13 @@ public class Room implements Serializable {
 
 	private String title;
 
-	//bi-directional many-to-one association to Booking
-	@OneToMany(mappedBy="room")
-	private List<Booking> bookings;
-
 	//bi-directional many-to-one association to RoomDetail
 	@OneToMany(mappedBy="room")
 	private List<RoomDetail> roomDetails;
+
+	//bi-directional many-to-one association to BookingDetail
+	@OneToMany(mappedBy="room")
+	private List<BookingDetail> bookingDetails;
 
 	public Room() {
 	}
@@ -101,28 +101,6 @@ public class Room implements Serializable {
 		this.title = title;
 	}
 
-	public List<Booking> getBookings() {
-		return this.bookings;
-	}
-
-	public void setBookings(List<Booking> bookings) {
-		this.bookings = bookings;
-	}
-
-	public Booking addBooking(Booking booking) {
-		getBookings().add(booking);
-		booking.setRoom(this);
-
-		return booking;
-	}
-
-	public Booking removeBooking(Booking booking) {
-		getBookings().remove(booking);
-		booking.setRoom(null);
-
-		return booking;
-	}
-
 	public List<RoomDetail> getRoomDetails() {
 		return this.roomDetails;
 	}
@@ -143,6 +121,28 @@ public class Room implements Serializable {
 		roomDetail.setRoom(null);
 
 		return roomDetail;
+	}
+
+	public List<BookingDetail> getBookingDetails() {
+		return this.bookingDetails;
+	}
+
+	public void setBookingDetails(List<BookingDetail> bookingDetails) {
+		this.bookingDetails = bookingDetails;
+	}
+
+	public BookingDetail addBookingDetail(BookingDetail bookingDetail) {
+		getBookingDetails().add(bookingDetail);
+		bookingDetail.setRoom(this);
+
+		return bookingDetail;
+	}
+
+	public BookingDetail removeBookingDetail(BookingDetail bookingDetail) {
+		getBookingDetails().remove(bookingDetail);
+		bookingDetail.setRoom(null);
+
+		return bookingDetail;
 	}
 
 }

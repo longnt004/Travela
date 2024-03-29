@@ -21,13 +21,19 @@ public class User implements Serializable {
 
 	private String email;
 
+	@Column(name="first_name")
+	private String firstName;
+
+	@Column(name="last_name")
+	private String lastName;
+
 	private String password;
 
 	private String phone;
 
 	private boolean role;
 
-	private String username;
+	private boolean status;
 
 	//bi-directional many-to-one association to Booking
 	@OneToMany(mappedBy="user")
@@ -50,6 +56,22 @@ public class User implements Serializable {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getFirstName() {
+		return this.firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return this.lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	public String getPassword() {
@@ -76,12 +98,12 @@ public class User implements Serializable {
 		this.role = role;
 	}
 
-	public String getUsername() {
-		return this.username;
+	public boolean getStatus() {
+		return this.status;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setStatus(boolean status) {
+		this.status = status;
 	}
 
 	public List<Booking> getBookings() {

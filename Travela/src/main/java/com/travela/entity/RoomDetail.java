@@ -23,8 +23,6 @@ public class RoomDetail implements Serializable {
 	@Column(name="create_date")
 	private Date createDate;
 
-	private boolean status;
-
 	//bi-directional many-to-one association to Facility
 	@ManyToOne
 	@JoinColumn(name="facinities_id")
@@ -52,14 +50,6 @@ public class RoomDetail implements Serializable {
 
 	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
-	}
-
-	public boolean getStatus() {
-		return this.status;
-	}
-
-	public void setStatus(boolean status) {
-		this.status = status;
 	}
 
 	public Facility getFacility() {
