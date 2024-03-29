@@ -9,7 +9,7 @@ public class JpaUtil {
 
 	public static EntityManager getEntityManager() {
 		if (emf == null || emf.isOpen()) {
-			emf = Persistence.createEntityManagerFactory("mTube");
+			emf = Persistence.createEntityManagerFactory("Travela");
 		}
 
 		return emf.createEntityManager();

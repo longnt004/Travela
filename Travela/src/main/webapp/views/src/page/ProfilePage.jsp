@@ -22,19 +22,53 @@
 				<div class="p-3">
 					<h3 class="text-light">Update Profile</h3>
 					<form>
-						<div class="mb-3">
-							<input type="text" class="form-control" id="name" name="name" />
+						<div class="row mb-3">
+							<div class="col-sm-4">
+								<div class="p-1 border border-2 rounded-2 bg-light">
+									<div class="ratio ratio-1x1">
+										<img alt="" src="./views/src/img/bg2.jpg"
+											class="img-fluid rounded-2">
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-8 pb-0">
+								<div class="row mb-3">
+									<div class="col-sm-6">
+										<label class="form-label text-light">First Name:</label> <input
+											type="text" class="form-control" name="firstName"
+											value="${sessionScope.user.firstName}" />
+									</div>
+									<div class="col-sm-6">
+										<label class="form-label text-light">Last Name:</label> <input
+											type="text" class="form-control" name="lastName"
+											value="${sessionScope.user.lastName}" />
+									</div>
+								</div>
+
+								<div class="mb-3">
+									<label class="form-label text-light">Email:</label> <input
+										type="email" class="form-control" id="email" name="email"
+										value="${sessionScope.user.email}" />
+								</div>
+								<div class="mt-4">
+									<select class="form-select "
+										aria-label="Default select example">
+										<option selected>Select Your Gender?</option>
+										<option value="male">Male</option>
+										<option value="female">Female</option>
+										<option value="other">Other</option>
+									</select>
+								</div>
+							</div>
 						</div>
 						<div class="mb-3">
-							<input type="text" class="form-control" name="phoneNumber"
-								id="phoneNumber" />
+							<label class="form-label text-light">Phone:</label> <input
+								type="text" class="form-control" name="phoneNumber"
+								id="phoneNumber" value="${sessionScope.user.phone}" />
 						</div>
 						<div class="mb-3">
-							<input type="email" class="form-control" id="email" name="email" />
-						</div>
-						<div class="mb-3">
-							<input type="date" class="form-control" id="dateOut"
-								name="dateOut" />
+							<label class="form-label text-light">Birthday:</label> <input
+								type="date" class="form-control" id="dateOut" name="dateOut" />
 						</div>
 						<button type="submit" class="btn btn-primary">Update</button>
 					</form>

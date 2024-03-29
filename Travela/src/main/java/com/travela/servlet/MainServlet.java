@@ -11,7 +11,7 @@ import java.io.IOException;
  * Servlet implementation class MainServlet
  */
 
-@WebServlet({"/rooms", "/tour", "/roomdetails","/login","/register", "/profile"})
+@WebServlet(urlPatterns = {"/rooms", "/tour", "/roomdetails","/register", "/profile"})
 public class MainServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
