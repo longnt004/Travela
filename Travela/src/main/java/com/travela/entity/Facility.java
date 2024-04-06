@@ -26,8 +26,6 @@ public class Facility implements Serializable {
 
 	private String icon;
 
-	private String image;
-
 	private boolean status;
 
 	private String title;
@@ -61,14 +59,6 @@ public class Facility implements Serializable {
 
 	public void setIcon(String icon) {
 		this.icon = icon;
-	}
-
-	public String getImage() {
-		return this.image;
-	}
-
-	public void setImage(String image) {
-		this.image = image;
 	}
 
 	public boolean getStatus() {

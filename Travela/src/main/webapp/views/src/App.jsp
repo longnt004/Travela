@@ -1,12 +1,17 @@
+<%@page import="com.travela.entity.User"%>
+<%@page import="com.travela.util.RRShare"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
 <!-- Spinner Start -->
 <%@ include file="./component/Spinner.jsp"%>
 <!-- Spinner End -->
+<!-- SuccessModal Start  -->
+<%@ include file="./component/ModalSuccess.jsp"%>
+<!-- SuccessModal End  -->
 
 <c:choose>
-	<c:when test="${requestScope.LoginPage || requestScope.RegisterPage}">
+	<c:when test="${empty sessionScope.user}">
 		<%@ include file="./page/auth/AuthPage.jsp"%>
 	</c:when>
 	<c:otherwise>
@@ -19,23 +24,7 @@
 		<!-- Navbar End -->
 
 		<!-- Container Start -->
-		<c:choose>
-			<c:when test="${requestScope.HomePage}">
-				<%@ include file="./page/HomePage.jsp"%>
-			</c:when>
-			<c:when test="${requestScope.RoomsPage}">
-				<%@ include file="./page/RoomsPage.jsp"%>
-			</c:when>
-			<c:when test="${requestScope.RoomDetailsPage}">
-				<%@ include file="./page/RoomDetailsPage.jsp"%>
-			</c:when>
-			<c:when test="${requestScope.TourPage}">
-				<%@ include file="./page/TourPage.jsp"%>
-			</c:when>
-			<c:when test="${requestScope.ProfilePage}">
-				<%@ include file="./page/ProfilePage.jsp"%>
-			</c:when>
-		</c:choose>
+		<jsp:include page="${requestScope.views}" />
 		<!-- Container End -->
 
 		<!-- Back to Top -->

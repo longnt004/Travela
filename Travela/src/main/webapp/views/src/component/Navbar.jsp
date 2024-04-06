@@ -15,20 +15,10 @@
 		<div class="collapse navbar-collapse" id="navbarCollapse">
 			<div class="navbar-nav ms-auto py-0">
 				<a href="/Travela/home" class="nav-item nav-link active">Home</a> <a
-					href="/Travela/tour" class="nav-item nav-link">Tours</a>
-				<div class="nav-item dropdown">
-					<a href="#" class="nav-link dropdown-toggle"
-						data-bs-toggle="dropdown">Rooms</a>
-					<div class="dropdown-menu m-0">
-						<a href="/Travela/rooms" class="dropdown-item">Single Room</a><a
-							href="/Travela/rooms" class="dropdown-item">Double Room</a> <a
-							href="/Travela/rooms" class="dropdown-item">Twin Room</a> <a
-							href="/Travela/rooms" class="dropdown-item">Suite Room</a>
-					</div>
-				</div>
-				<a href="gallery.html" class="nav-item nav-link">Service</a>
+					href="/Travela/tour" class="nav-item nav-link">Tours</a> <a
+					href="/Travela/rooms" class="nav-item nav-link">Rooms</a>
 			</div>
-			<a href="" class="btn btn-primary rounded-pill py-2 px-4 ms-lg-4">Book
+			<a href="/Travela/rooms" class="btn btn-primary rounded-pill py-2 px-4 ms-lg-4">Book
 				Now</a>
 		</div>
 	</nav>

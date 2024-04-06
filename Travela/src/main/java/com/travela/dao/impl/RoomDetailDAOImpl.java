@@ -15,6 +15,13 @@ public class RoomDetailDAOImpl extends AbstractDAO<RoomDetail> implements RoomDe
 	}
 
 	@Override
+	public List<RoomDetail> findByRoomId(String id) {
+		// TODO Auto-generated method stub
+		String jpql = "Select rd From RoomDetail rd Where rd.room.roomId = ?0";
+		return super.findMany(RoomDetail.class, jpql, id);
+	}
+
+	@Override
 	public List<RoomDetail> findAll() {
 		// TODO Auto-generated method stub
 		return super.findAll(RoomDetail.class, false);
@@ -25,13 +32,13 @@ public class RoomDetailDAOImpl extends AbstractDAO<RoomDetail> implements RoomDe
 		// TODO Auto-generated method stub
 		return super.findAll(RoomDetail.class, false, pageNumber, pageSize);
 	}
-	
+
 	@Override
 	public RoomDetail create(RoomDetail entity) {
 		// TODO Auto-generated method stub
 		return super.create(entity);
 	}
-	
+
 	@Override
 	public RoomDetail update(RoomDetail entity) {
 		// TODO Auto-generated method stub

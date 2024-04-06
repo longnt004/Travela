@@ -6,15 +6,23 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
+import com.travela.dao.impl.RoomDAOImpl;
+import com.travela.entity.Booking;
+import com.travela.entity.BookingDetail;
 
 /**
  * Servlet implementation class MainServlet
  */
 
-@WebServlet(urlPatterns = {"/rooms", "/tour", "/roomdetails","/register", "/profile"})
+@WebServlet(urlPatterns = {"/rooms", "/tour", "/roomdetails" , "/profile"})
 public class MainServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	
+	private RoomDAOImpl roomDAOImpl = new RoomDAOImpl();
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -33,19 +41,18 @@ public class MainServlet extends HttpServlet {
 
 		String URI = request.getRequestURI();
 		if (URI.contains("rooms")) {
-			request.setAttribute("RoomsPage", true);
+			
+			request.setAttribute("views", "/views/src/page/RoomsPage.jsp");
 		} else if(URI.contains("tour")) {
-			request.setAttribute("TourPage", true);	
+			request.setAttribute("views", "/views/src/page/TourPage.jsp");	
 		} else if(URI.contains("roomdetails")) {
-			request.setAttribute("RoomDetailsPage", true);	
-		} else if(URI.contains("login")){
-			request.setAttribute("LoginPage", true);
-		} else if(URI.contains("register")){
-			request.setAttribute("RegisterPage", true);
+			request.setAttribute("room", roomDAOImpl.findById(request.getParameter("rid")));
+			
+			request.setAttribute("views", "/views/src/page/RoomDetailsPage.jsp");	
 		} else if (URI.contains("profile")){
-			request.setAttribute("ProfilePage", true);
+			request.setAttribute("views", "/views/src/page/ProfilePage.jsp");
 		} else {
-			request.setAttribute("HomePage", true);
+			request.setAttribute("views", "/views/src/page/HomePage.jsp");
 		}
 		request.getRequestDispatcher("/views/index.jsp").forward(request, response);
 	}
@@ -57,6 +64,10 @@ public class MainServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+//		String URI = request.getRequestURI();
+//		if (URI.contains("RoomDetailsPage")) {
+//			Booking booking = new Booking();
+//		}
 		doGet(request, response);
 	}
 

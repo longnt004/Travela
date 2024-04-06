@@ -18,6 +18,11 @@ public class BookingDetail implements Serializable {
 	@Column(name="booking_detail_id")
 	private String bookingDetailId;
 
+	private double price;
+
+	@Column(name="quantity_booking_room")
+	private int quantityBookingRoom = 0;
+
 	//bi-directional many-to-one association to Booking
 	@ManyToOne
 	@JoinColumn(name="booking_id")
@@ -39,6 +44,22 @@ public class BookingDetail implements Serializable {
 		this.bookingDetailId = bookingDetailId;
 	}
 
+	public double getPrice() {
+		return this.price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
+	public int getQuantityBookingRoom() {
+		return this.quantityBookingRoom;
+	}
+
+	public void setQuantityBookingRoom(int quantityBookingRoom) {
+		this.quantityBookingRoom = quantityBookingRoom;
+	}
+
 	public Booking getBooking() {
 		return this.booking;
 	}
@@ -54,5 +75,6 @@ public class BookingDetail implements Serializable {
 	public void setRoom(Room room) {
 		this.room = room;
 	}
+
 
 }

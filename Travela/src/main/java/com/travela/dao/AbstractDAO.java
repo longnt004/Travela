@@ -15,8 +15,8 @@ public static final EntityManager entityManager = JpaUtil.getEntityManager();
 	@Override
 	protected void finalize() throws Throwable {
 		// TODO Auto-generated method stub
-		entityManager.close();
 		super.finalize();
+//		entityManager.close();
 	}
 	
 	public T findById(Class<T> clazz, String id) {
@@ -86,7 +86,6 @@ public static final EntityManager entityManager = JpaUtil.getEntityManager();
 			entityManager.getTransaction().begin();
 			entityManager.persist(entity);
 			entityManager.getTransaction().commit();
-			System.out.println(entity);
 			return entity;
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -101,7 +100,6 @@ public static final EntityManager entityManager = JpaUtil.getEntityManager();
 			entityManager.getTransaction().begin();
 			entityManager.merge(entity);
 			entityManager.getTransaction().commit();
-			System.out.println(entity);
 			return entity;
 		} catch (Exception e) {
 			// TODO: handle exception

@@ -15,6 +15,13 @@ public class UserDAOImpl extends AbstractDAO<User> implements UserDAO {
 	}
 
 	@Override
+	public User findLastOne() {
+		// TODO Auto-generated method stub
+		String jpql = "Select o From User o Order By o.id desc";
+		return super.findOne(User.class, jpql);
+	}
+	
+	@Override
 	public User findByEmail(String email) {
 		String sql = "Select o From User o Where o.email = ?0";
 		return super.findOne(User.class, sql, email);

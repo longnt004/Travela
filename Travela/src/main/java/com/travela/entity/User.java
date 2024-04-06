@@ -31,7 +31,7 @@ public class User implements Serializable {
 
 	private String phone;
 
-	private boolean role;
+	private String role;
 
 	private boolean status;
 
@@ -90,11 +90,11 @@ public class User implements Serializable {
 		this.phone = phone;
 	}
 
-	public boolean getRole() {
+	public String getRole() {
 		return this.role;
 	}
 
-	public void setRole(boolean role) {
+	public void setRole(String role) {
 		this.role = role;
 	}
 

@@ -30,17 +30,23 @@ public class Room implements Serializable {
 
 	private double price;
 
+	@Column(name="room_area")
+	private String roomArea;
+
+	@Column(name="room_bed")
+	private String roomBed;
+
 	private boolean status;
 
 	private String title;
 
-	//bi-directional many-to-one association to RoomDetail
-	@OneToMany(mappedBy="room")
-	private List<RoomDetail> roomDetails;
-
 	//bi-directional many-to-one association to BookingDetail
 	@OneToMany(mappedBy="room")
 	private List<BookingDetail> bookingDetails;
+
+	//bi-directional many-to-one association to RoomDetail
+	@OneToMany(mappedBy="room")
+	private List<RoomDetail> roomDetails;
 
 	public Room() {
 	}
@@ -85,6 +91,22 @@ public class Room implements Serializable {
 		this.price = price;
 	}
 
+	public String getRoomArea() {
+		return this.roomArea;
+	}
+
+	public void setRoomArea(String roomArea) {
+		this.roomArea = roomArea;
+	}
+
+	public String getRoomBed() {
+		return this.roomBed;
+	}
+
+	public void setRoomBed(String roomBed) {
+		this.roomBed = roomBed;
+	}
+
 	public boolean getStatus() {
 		return this.status;
 	}
@@ -99,28 +121,6 @@ public class Room implements Serializable {
 
 	public void setTitle(String title) {
 		this.title = title;
-	}
-
-	public List<RoomDetail> getRoomDetails() {
-		return this.roomDetails;
-	}
-
-	public void setRoomDetails(List<RoomDetail> roomDetails) {
-		this.roomDetails = roomDetails;
-	}
-
-	public RoomDetail addRoomDetail(RoomDetail roomDetail) {
-		getRoomDetails().add(roomDetail);
-		roomDetail.setRoom(this);
-
-		return roomDetail;
-	}
-
-	public RoomDetail removeRoomDetail(RoomDetail roomDetail) {
-		getRoomDetails().remove(roomDetail);
-		roomDetail.setRoom(null);
-
-		return roomDetail;
 	}
 
 	public List<BookingDetail> getBookingDetails() {
@@ -145,4 +145,35 @@ public class Room implements Serializable {
 		return bookingDetail;
 	}
 
+	public List<RoomDetail> getRoomDetails() {
+		return this.roomDetails;
+	}
+
+	public void setRoomDetails(List<RoomDetail> roomDetails) {
+		this.roomDetails = roomDetails;
+	}
+
+	public RoomDetail addRoomDetail(RoomDetail roomDetail) {
+		getRoomDetails().add(roomDetail);
+		roomDetail.setRoom(this);
+
+		return roomDetail;
+	}
+
+	public RoomDetail removeRoomDetail(RoomDetail roomDetail) {
+		getRoomDetails().remove(roomDetail);
+		roomDetail.setRoom(null);
+
+		return roomDetail;
+	}
+
+	@Override
+	public String toString() {
+		return "Room [roomId=" + roomId + ", createDate=" + createDate + ", description=" + description + ", image="
+				+ image + ", price=" + price + ", roomArea=" + roomArea + ", roomBed=" + roomBed + ", status=" + status
+				+ ", title=" + title + ", bookingDetails=" + bookingDetails + ", roomDetails=" + roomDetails + "]";
+	}
+
+	
+	
 }

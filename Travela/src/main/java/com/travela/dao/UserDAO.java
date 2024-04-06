@@ -7,6 +7,7 @@ import com.travela.entity.User;
 
 public interface UserDAO {
 	User findById(String id);
+	User findLastOne();
 	User findByEmail(String email);
 	User findByUsername(String username);
 	User findByEmailAndPassword(String email, String password);

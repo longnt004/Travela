@@ -64,7 +64,7 @@
 						<div class="mb-3">
 							<label class="form-label text-light">Phone:</label> <input
 								type="text" class="form-control" name="phoneNumber"
-								id="phoneNumber" value="${sessionScope.user.phone}" />
+								id="phoneNumber" placeholder="Your Phone?" value="${sessionScope.user.phone}" />
 						</div>
 						<div class="mb-3">
 							<label class="form-label text-light">Birthday:</label> <input

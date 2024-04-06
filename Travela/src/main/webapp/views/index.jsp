@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,9 +34,80 @@
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+		src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/js/bootstrap.min.js"></script>
+	<script
+		src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
 	<!-- Template Javascript -->
 	<script src="./views/src/js/main.js"></script>
-	
+	<script type="text/javascript">
+		var totalPrice = ${sessionScope.totalPrice}+0;
+
+		function reload(url, component) {
+			var xhr = new XMLHttpRequest();
+			xhr.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					component.html(xhr.responseText);
+					$('#totalPrice').html(
+							"Total price: "
+									+ totalPrice.toLocaleString('it-IT', {
+										style : 'currency',
+										currency : 'VND'
+									}));
+				}
+			};
+
+			xhr.open("GET", url, true);
+			xhr.send();
+
+		}
+
+		reload("./views/src/component/BookingDetail.jsp", $("#bookingDetail"));
+
+		function addRoom(rId, totalPriceInput) {
+			console.log(totalPrice)
+			$.ajax({
+				url : "/Travela/room/add-room?rId=" + rId
+			}).then(
+					function(data) {
+						reload("./views/src/component/BookingDetail.jsp",
+								$("#bookingDetail"));
+						totalPrice += totalPriceInput;
+					})
+		}
+
+		function minusRoom(rId, totalPriceInput) {
+			console.log(rId)
+			$.ajax({
+				url : "/Travela/room/minus-room?rId=" + rId
+			}).then(
+					function(data) {
+						reload("./views/src/component/BookingDetail.jsp",
+								$("#bookingDetail"));
+						totalPrice -= totalPriceInput;
+					})
+		}
+
+		function cancelRoom(rId, totalPriceInput, quantityInput) {
+			$.ajax({
+				url : "/Travela/room/cancel-room?rId=" + rId
+			}).then(
+					function(data) {
+						reload("./views/src/component/BookingDetail.jsp",
+								$("#bookingDetail"));
+						totalPrice -= (totalPriceInput * quantityInput);
+					})
+		}
+
+		function bookingRoom() {
+			$.ajax({
+				url : "/Travela/room/booking?checkIn="+$('#checkIn').val()+"&checkOut="+$('#checkOut').val()
+			}).then(
+					function(data) {
+						reload("./views/src/component/BookingDetail.jsp",
+								$("#bookingDetail"));
+						totalPrice = 0;
+					})
+		}
+	</script>
 </body>
 </html>

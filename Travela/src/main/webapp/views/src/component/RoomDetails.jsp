@@ -1,75 +1,10 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
-<%!public class Service {
-		private String icon;
-		private String title;
-
-		public Service(String icon, String title) {
-			this.icon = icon;
-			this.title = title;
-		}
-
-		public String getIcon() {
-			return this.icon;
-		}
-
-		public String getTitle() {
-			return this.title;
-		}
-	}
-
-	public class Room {
-
-		private String imgURL;
-		private String title;
-		private int price;
-		private String description;
-		private List<Service> listServices;
-
-		public Room(String imgURL, String title, int price, String description, List<Service> listServices) {
-			this.imgURL = imgURL;
-			this.title = title;
-			this.price = price;
-			this.description = description;
-			this.listServices = listServices;
-		}
-
-		public String getImgURL() {
-			return this.imgURL;
-		}
-
-		public String getTitle() {
-			return this.title;
-		}
-
-		public int getPrice() {
-			return this.price;
-		}
-
-		public String getDescription() {
-			return this.description;
-		}
-
-		public List<Service> getListServices() {
-			return this.listServices;
-		}
-	}
-
-	List<Service> listServices = new ArrayList<>(List.of(new Service("<i class='fas fa-wind'></i>", "Air conditioning"),
-			new Service("<i class='fas fa-bed'></i>", "2 Bedroom"),
-			new Service("<i class='fas fa-broom'></i>", "Room Service"),
-			new Service("<i class='fas fa-newspaper'></i>", "Free Newspaper"),
-			new Service("<i class='fas fa-bacon'></i>", "Breakfast"),
-			new Service("<i class='fas fa-dumbbell'></i>", "GYM"), new Service("<i class='fas fa-tv'></i>", "TV"),
-			new Service("<i class='fas fa-wifi'></i>", "Wifi"),
-			new Service("<i class='fas fa-swimmer'></i>", "Use of pool")));
-
-	Room singleRoom = new Room("./views/src/img/sgr3.jpg", "Single Room", 1300,
-			"Single rooms are assigned to one people; expect one double bed, or two twin beds depending on the hotel.",
-			listServices);%>
 
 <div class="container-fluid destination py-5">
 	<div class="row g-4">
@@ -79,36 +14,44 @@
 					<div class="row">
 						<div class="col-xl-2">
 							<img class="img-fluid rounded" height="100"
-								src="<%=singleRoom.getImgURL()%>" alt="" />
+								src="${requestScope.room.getImage()}" alt="" />
 						</div>
 						<div class="col-lg-10">
 							<div class="d-flex justify-content-between px-3 py-3">
 								<div>
-									<h2>Single Room</h2>
+									<h2>${requestScope.room.getTitle()}</h2>
 								</div>
 								<div class="align-self-end">
 									<h5>
-										<%=singleRoom.getPrice()%>
-										<span class="fs-6">$</span>/Night
+										<fmt:formatNumber type="number" pattern="###,###"
+											value="${requestScope.room.getPrice()}" />
+										<span class="fs-6">VND</span>/Night
 									</h5>
 								</div>
 							</div>
 							<span class="d-block border border-2 rounded"></span>
 							<div class="d-flex pt-3 ps-2 gap-4">
 								<div>
-									<i class="fas fa-bed"></i> 2 Bed
+									<p class="m-0 p-1 d-flex align-items-center gap-1">
+										<svg width="24" height="24" viewBox="0 0 16 16" fill="none"
+											xmlns="http://www.w3.org/2000/svg">
+									<path
+												d="M2.49978 15.5V5.00002C2.49978 4.86741 2.4471 4.74024 2.35333 4.64647C2.25956 4.5527 2.13239 4.50002 1.99978 4.50002C1.86717 4.50002 1.73999 4.5527 1.64622 4.64647C1.55246 4.74024 1.49978 4.86741 1.49978 5.00002V15.5C1.49978 15.6326 1.55246 15.7598 1.64622 15.8536C1.73999 15.9473 1.86717 16 1.99978 16C2.13239 16 2.25956 15.9473 2.35333 15.8536C2.4471 15.7598 2.49978 15.6326 2.49978 15.5ZM0.146444 14.3534L1.64644 15.8534C1.74019 15.947 1.86728 15.9996 1.99978 15.9996C2.13228 15.9996 2.25936 15.947 2.35311 15.8534L3.85311 14.3534C3.90224 14.3076 3.94164 14.2524 3.96896 14.191C3.99629 14.1297 4.01099 14.0635 4.01217 13.9964C4.01336 13.9292 4.00101 13.8626 3.97586 13.8003C3.95071 13.738 3.91328 13.6815 3.8658 13.634C3.81832 13.5865 3.76177 13.5491 3.69951 13.5239C3.63725 13.4988 3.57056 13.4864 3.50343 13.4876C3.43629 13.4888 3.37008 13.5035 3.30875 13.5308C3.24742 13.5582 3.19222 13.5976 3.14644 13.6467L1.64644 15.1467H2.35311L0.85311 13.6467C0.758327 13.5584 0.632963 13.5103 0.503429 13.5126C0.373895 13.5149 0.250304 13.5673 0.158696 13.6589C0.067087 13.7506 0.0146124 13.8741 0.0123269 14.0037C0.0100414 14.1332 0.0581236 14.2586 0.146444 14.3534V14.3534ZM3.85311 6.14669L2.35311 4.64669C2.25936 4.55305 2.13228 4.50046 1.99978 4.50046C1.86728 4.50046 1.74019 4.55305 1.64644 4.64669L0.146444 6.14669C0.097319 6.19246 0.0579175 6.24766 0.0305896 6.309C0.00326158 6.37033 -0.011433 6.43654 -0.0126175 6.50367C-0.013802 6.57081 -0.00145225 6.63749 0.0236951 6.69975C0.0488424 6.76201 0.0862722 6.81857 0.133751 6.86605C0.181231 6.91353 0.237786 6.95096 0.300045 6.9761C0.362304 7.00125 0.42899 7.0136 0.496125 7.01242C0.563261 7.01123 0.62947 6.99654 0.690802 6.96921C0.752135 6.94188 0.807336 6.90248 0.85311 6.85335L2.35311 5.35335H1.64644L3.14644 6.85335C3.19222 6.90248 3.24742 6.94188 3.30875 6.96921C3.37008 6.99654 3.43629 7.01123 3.50343 7.01242C3.57056 7.0136 3.63725 7.00125 3.69951 6.9761C3.76177 6.95096 3.81832 6.91353 3.8658 6.86605C3.91328 6.81857 3.95071 6.76201 3.97586 6.69975C4.00101 6.63749 4.01336 6.57081 4.01217 6.50367C4.01099 6.43654 3.99629 6.37033 3.96896 6.309C3.94164 6.24766 3.90224 6.19246 3.85311 6.14669ZM4.99978 2.50002H15.4998C15.6324 2.50002 15.7596 2.44734 15.8533 2.35357C15.9471 2.25981 15.9998 2.13263 15.9998 2.00002C15.9998 1.86741 15.9471 1.74024 15.8533 1.64647C15.7596 1.5527 15.6324 1.50002 15.4998 1.50002H4.99978C4.86717 1.50002 4.73999 1.5527 4.64622 1.64647C4.55246 1.74024 4.49978 1.86741 4.49978 2.00002C4.49978 2.13263 4.55246 2.25981 4.64622 2.35357C4.73999 2.44734 4.86717 2.50002 4.99978 2.50002ZM6.14644 0.146688L4.64644 1.64669C4.55281 1.74044 4.50022 1.86752 4.50022 2.00002C4.50022 2.13252 4.55281 2.2596 4.64644 2.35335L6.14644 3.85335C6.19222 3.90248 6.24742 3.94188 6.30875 3.96921C6.37009 3.99654 6.43629 4.01123 6.50343 4.01242C6.57056 4.0136 6.63725 4.00125 6.69951 3.9761C6.76177 3.95096 6.81832 3.91353 6.8658 3.86605C6.91328 3.81857 6.95071 3.76201 6.97586 3.69975C7.00101 3.63749 7.01336 3.57081 7.01217 3.50367C7.01099 3.43654 6.99629 3.37033 6.96897 3.309C6.94164 3.24766 6.90224 3.19246 6.85311 3.14669L5.35311 1.64669V2.35335L6.85311 0.853354C6.90224 0.80758 6.94164 0.752379 6.96897 0.691047C6.99629 0.629714 7.01099 0.563505 7.01217 0.496369C7.01336 0.429234 7.00101 0.362548 6.97586 0.300289C6.95071 0.238031 6.91328 0.181475 6.8658 0.133995C6.81832 0.0865163 6.76177 0.0490866 6.69951 0.0239392C6.63725 -0.00120811 6.57056 -0.0135579 6.50343 -0.0123734C6.43629 -0.0111888 6.37009 0.00350572 6.30875 0.0308337C6.24742 0.0581617 6.19222 0.0975632 6.14644 0.146688V0.146688ZM14.3531 3.85335L15.8531 2.35335C15.9467 2.2596 15.9993 2.13252 15.9993 2.00002C15.9993 1.86752 15.9467 1.74044 15.8531 1.64669L14.3531 0.146688C14.3073 0.0975632 14.2521 0.0581617 14.1908 0.0308337C14.1295 0.00350572 14.0633 -0.0111888 13.9961 -0.0123734C13.929 -0.0135579 13.8623 -0.00120811 13.8 0.0239392C13.7378 0.0490866 13.6812 0.0865163 13.6338 0.133995C13.5863 0.181475 13.5488 0.238031 13.5237 0.300289C13.4985 0.362548 13.4862 0.429234 13.4874 0.496369C13.4886 0.563505 13.5033 0.629714 13.5306 0.691047C13.5579 0.752379 13.5973 0.80758 13.6464 0.853354L15.1464 2.35335V1.64669L13.6464 3.14669C13.5581 3.24147 13.51 3.36684 13.5123 3.49637C13.5146 3.6259 13.5671 3.74949 13.6587 3.8411C13.7503 3.93271 13.8739 3.98519 14.0034 3.98747C14.133 3.98976 14.2583 3.94167 14.3531 3.85335V3.85335ZM6.99978 8.70002V13.5C6.99978 13.8978 7.15781 14.2794 7.43912 14.5607C7.72042 14.842 8.10195 15 8.49978 15H12.4998C12.8976 15 13.2791 14.842 13.5604 14.5607C13.8417 14.2794 13.9998 13.8978 13.9998 13.5V8.70002C13.9998 8.56741 13.9471 8.44024 13.8533 8.34647C13.7596 8.2527 13.6324 8.20002 13.4998 8.20002C13.3672 8.20002 13.24 8.2527 13.1462 8.34647C13.0525 8.44024 12.9998 8.56741 12.9998 8.70002V13.5C12.9998 13.6326 12.9471 13.7598 12.8533 13.8536C12.7596 13.9473 12.6324 14 12.4998 14H8.49978C8.36717 14 8.23999 13.9473 8.14622 13.8536C8.05246 13.7598 7.99978 13.6326 7.99978 13.5V8.70002C7.99978 8.56741 7.9471 8.44024 7.85333 8.34647C7.75956 8.2527 7.63239 8.20002 7.49978 8.20002C7.36717 8.20002 7.23999 8.2527 7.14622 8.34647C7.05246 8.44024 6.99978 8.56741 6.99978 8.70002V8.70002ZM15.8344 10.1287L11.5031 6.22869C11.2277 5.98086 10.8703 5.84373 10.4998 5.84373C10.1293 5.84373 9.77187 5.98086 9.49644 6.22869L5.16511 10.1287C5.06981 10.2183 5.0134 10.3416 5.00799 10.4723C5.00257 10.603 5.04858 10.7306 5.13615 10.8277C5.22371 10.9249 5.34586 10.9839 5.4764 10.992C5.60694 11.0002 5.73547 10.9569 5.83444 10.8714L10.1658 6.97135C10.2575 6.88899 10.3765 6.84344 10.4998 6.84344C10.6231 6.84344 10.742 6.88899 10.8338 6.97135L15.1651 10.8714C15.2641 10.9569 15.3926 11.0002 15.5232 10.992C15.6537 10.9839 15.7758 10.9249 15.8634 10.8277C15.951 10.7306 15.997 10.603 15.9916 10.4723C15.9862 10.3416 15.9297 10.2183 15.8344 10.1287Z"
+												fill="black" fill-opacity="0.6"></path>
+								</svg>
+										<span class="pt-1">${requestScope.room.getRoomArea()}</span>
+									</p>
 								</div>
 								<div>
-									<i class="fas fa-tv"></i> TV
-								</div>
-								<div>
-									<i class="fas fa-dumbbell"></i> GYM
-								</div>
-								<div>
-									<i class="fas fa-wifi"></i> Wifi
-								</div>
-								<div>
-									<i class="fas fa-parking"></i> Parking
+									<p class="m-0 p-1 d-flex align-items-center gap-1">
+										<svg width="24" height="24" viewBox="0 0 16 16" fill="none"
+											xmlns="http://www.w3.org/2000/svg">
+									<path
+												d="M1.83333 7H14.1667C14.6267 7 15 7.37333 15 7.83333V11L15.5 10.5H0.5L1 11V7.83333C1 7.37333 1.37333 7 1.83333 7ZM1.83333 6C1.3471 6 0.880788 6.19315 0.536971 6.53697C0.193154 6.88079 0 7.3471 0 7.83333L0 11C0 11.276 0.224 11.5 0.5 11.5H15.5C15.6326 11.5 15.7598 11.4473 15.8536 11.3536C15.9473 11.2598 16 11.1326 16 11V7.83333C16 7.3471 15.8068 6.88079 15.463 6.53697C15.1192 6.19315 14.6529 6 14.1667 6H1.83333ZM0 11V13C0 13.1326 0.0526784 13.2598 0.146447 13.3536C0.240215 13.4473 0.367392 13.5 0.5 13.5C0.632608 13.5 0.759785 13.4473 0.853553 13.3536C0.947322 13.2598 1 13.1326 1 13V11C1 10.8674 0.947322 10.7402 0.853553 10.6464C0.759785 10.5527 0.632608 10.5 0.5 10.5C0.367392 10.5 0.240215 10.5527 0.146447 10.6464C0.0526784 10.7402 0 10.8674 0 11H0ZM15 11V13C15 13.1326 15.0527 13.2598 15.1464 13.3536C15.2402 13.4473 15.3674 13.5 15.5 13.5C15.6326 13.5 15.7598 13.4473 15.8536 13.3536C15.9473 13.2598 16 13.1326 16 13V11C16 10.8674 15.9473 10.7402 15.8536 10.6464C15.7598 10.5527 15.6326 10.5 15.5 10.5C15.3674 10.5 15.2402 10.5527 15.1464 10.6464C15.0527 10.7402 15 10.8674 15 11ZM14.5 6.5V2C14.5 1.60218 14.342 1.22064 14.0607 0.93934C13.7794 0.658035 13.3978 0.5 13 0.5H3C2.60218 0.5 2.22064 0.658035 1.93934 0.93934C1.65804 1.22064 1.5 1.60218 1.5 2V6.5C1.5 6.63261 1.55268 6.75979 1.64645 6.85355C1.74021 6.94732 1.86739 7 2 7C2.13261 7 2.25979 6.94732 2.35355 6.85355C2.44732 6.75979 2.5 6.63261 2.5 6.5V2C2.5 1.86739 2.55268 1.74021 2.64645 1.64645C2.74021 1.55268 2.86739 1.5 3 1.5H13C13.1326 1.5 13.2598 1.55268 13.3536 1.64645C13.4473 1.74021 13.5 1.86739 13.5 2V6.5C13.5 6.63261 13.5527 6.75979 13.6464 6.85355C13.7402 6.94732 13.8674 7 14 7C14.1326 7 14.2598 6.94732 14.3536 6.85355C14.4473 6.75979 14.5 6.63261 14.5 6.5ZM5.66667 4.5H10.3333C10.3775 4.5 10.4199 4.51756 10.4512 4.54882C10.4824 4.58007 10.5 4.62246 10.5 4.66667V6.5L11 6H5L5.5 6.5V4.66667C5.5 4.62246 5.51756 4.58007 5.54882 4.54882C5.58007 4.51756 5.62246 4.5 5.66667 4.5ZM5.66667 3.5C5.35725 3.5 5.0605 3.62292 4.84171 3.84171C4.62292 4.0605 4.5 4.35725 4.5 4.66667V6.5C4.5 6.776 4.724 7 5 7H11C11.1326 7 11.2598 6.94732 11.3536 6.85355C11.4473 6.75979 11.5 6.63261 11.5 6.5V4.66667C11.5 4.35725 11.3771 4.0605 11.1583 3.84171C10.9395 3.62292 10.6428 3.5 10.3333 3.5H5.66667Z"
+												fill="black" fill-opacity="0.6"></path>
+								</svg>
+										<span class="pt-1">${requestScope.room.getRoomBed()}</span>
+									</p>
 								</div>
 							</div>
 						</div>
@@ -122,9 +65,7 @@
 							<h4 class="fst-italic">Room Description</h4>
 							<div class="pt-2">
 								<div>
-									<p>
-										<%=singleRoom.getDescription()%>
-									</p>
+									<p>${requestScope.room.getDescription()}</p>
 									<div>
 										<div>
 											<p>
@@ -149,11 +90,13 @@
 								<div class="pt-4">
 									<h4 class="fst-italic">Amenities</h4>
 									<div class="p-2 row">
-										<c:forEach var="service"
-											items="<%=singleRoom.getListServices()%>">
+										<c:forEach var="roomDetail"
+											items="${requestScope.room.getRoomDetails()}">
 											<jsp:include page="/views/src/component/Service.jsp">
-												<jsp:param name="icon" value="${service.getIcon()}" />
-												<jsp:param name="title" value="${service.getTitle()}" />
+												<jsp:param name="icon"
+													value="${roomDetail.getFacility().getIcon()}" />
+												<jsp:param name="title"
+													value="${roomDetail.getFacility().getTitle()}" />
 											</jsp:include>
 										</c:forEach>
 									</div>
@@ -167,50 +110,22 @@
 									<h3>Fill Booking Details</h3>
 									<form>
 										<div class="mb-3">
-											<input type="text" class="form-control" id="name" name="name" />
+											<label class="form-label">Quantity</label> <input
+												type="number" min="1" class="form-control" id="quantity"
+												name="quantity" value="1"/>
 										</div>
-										<div class="mb-3">
-											<input type="text" class="form-control" name="phoneNumber"
-												id="phoneNumber" />
-										</div>
-										<div class="mb-3">
-											<input type="email" class="form-control" id="email"
-												name="email" />
-										</div>
-										<div class="mb-3">
-											<div class="row">
-												<div class="col-lg-6">
-													<select name="idType" id="idType" class="form-select">
-														<option value="">Choose ID Type</option>
-														<option value="volvo">Volvo</option>
-														<option value="saab">Saab</option>
-														<option value="mercedes">Mercedes</option>
-														<option value="audi">Audi</option>
-													</select>
-												</div>
-												<div class="col-lg-6">
-													<select name="gender" id="gender" class="form-select">
-														<option value="">Select Gender</option>
-														<option value="male">Male</option>
-														<option value="female">Female</option>
-														<option value="other">Other</option>
-													</select>
-												</div>
+										<div class="row mb-3">
+											<div class="col-lg-6">
+												<label class="form-label">Check In</label> <input
+													type="date" class="form-control" id="dateIn" name="dateIn" />
+											</div>
+											<div class="col-lg-6">
+												<label class="form-label">Check Out</label> <input
+													type="date" class="form-control" id="dateOut"
+													name="dateOut" />
 											</div>
 										</div>
-										<div class="mb-3">
-											<textarea class="form-control" id="address" name="address"
-												rows="3" placeholder="Address"></textarea>
-										</div>
-										<div class="mb-3">
-											<input type="date" class="form-control" id="dateIn"
-												name="dateIn" />
-										</div>
-										<div class="mb-3">
-											<input type="date" class="form-control" id="dateOut"
-												name="dateOut" />
-										</div>
-										<button type="submit" class="btn btn-primary">Book
+										<button type="submit" class="btn btn-primary" >Book
 											Now</button>
 									</form>
 								</div>

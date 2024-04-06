@@ -34,4 +34,19 @@ public class BookingDAOImpl extends AbstractDAO<Booking> implements BookingDAO {
 		return super.findMany(Booking.class, sql, checkIn, checkOut);
 	}
 
+	@Override
+	public Booking create(Booking entity) {
+		// TODO Auto-generated method stub
+		return super.create(entity);
+	}
+
+	@Override
+	public Booking findLastBooking() {
+		// TODO Auto-generated method stub
+		String jpql = "Select b From Booking b Order By b.bookingId desc";
+		return super.findOne(Booking.class, jpql);
+	}
+
+	
+	
 }

@@ -22,7 +22,7 @@ public class Booking implements Serializable {
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="booking_date")
-	private Date bookingDate;
+	private Date bookingDate = new Date();
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="check_in")
@@ -32,7 +32,10 @@ public class Booking implements Serializable {
 	@Column(name="check_out")
 	private Date checkOut;
 
-	private String status;
+	@Column(name="payment_status")
+	private boolean paymentStatus = false;
+
+	private String status = "PENDING";
 
 	//bi-directional many-to-one association to User
 	@ManyToOne
@@ -78,6 +81,14 @@ public class Booking implements Serializable {
 		this.checkOut = checkOut;
 	}
 
+	public boolean getPaymentStatus() {
+		return this.paymentStatus;
+	}
+
+	public void setPaymentStatus(boolean paymentStatus) {
+		this.paymentStatus = paymentStatus;
+	}
+
 	public String getStatus() {
 		return this.status;
 	}
@@ -115,5 +126,14 @@ public class Booking implements Serializable {
 
 		return bookingDetail;
 	}
+
+	@Override
+	public String toString() {
+		return "Booking [bookingId=" + bookingId + ", bookingDate=" + bookingDate + ", checkIn=" + checkIn
+				+ ", checkOut=" + checkOut + ", paymentStatus=" + paymentStatus + ", status=" + status + ", user="
+				+ user + ", bookingDetails=" + bookingDetails + "]";
+	}
+	
+	
 
 }
