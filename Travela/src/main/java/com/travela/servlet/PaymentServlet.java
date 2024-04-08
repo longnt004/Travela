@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.TimeZone;
 
-import com.travela.config.Config;
+import com.travela.config.VNPAYConfig;
 
 /**
  * Servlet implementation class PaymentServlet
@@ -34,10 +34,10 @@ public class PaymentServlet extends HttpServlet {
         long amount = Integer.parseInt(req.getParameter("amount"))* 100;
         String bankCode = req.getParameter("bankCode");
         
-        String vnp_TxnRef = Config.getRandomNumber(8);
-        String vnp_IpAddr = Config.getIpAddress(req);
+        String vnp_TxnRef = VNPAYConfig.getRandomNumber(8);
+        String vnp_IpAddr = VNPAYConfig.getIpAddress(req);
 
-        String vnp_TmnCode = Config.vnp_TmnCode;
+        String vnp_TmnCode = VNPAYConfig.vnp_TmnCode;
         
         Map<String, String> vnp_Params = new HashMap<>();
         vnp_Params.put("vnp_Version", vnp_Version);
@@ -59,7 +59,7 @@ public class PaymentServlet extends HttpServlet {
         } else {
             vnp_Params.put("vnp_Locale", "vn");
         }
-        vnp_Params.put("vnp_ReturnUrl", Config.vnp_ReturnUrl);
+        vnp_Params.put("vnp_ReturnUrl", VNPAYConfig.vnp_ReturnUrl);
         vnp_Params.put("vnp_IpAddr", vnp_IpAddr);
 
         Calendar cld = Calendar.getInstance(TimeZone.getTimeZone("Etc/GMT+7"));
@@ -95,9 +95,9 @@ public class PaymentServlet extends HttpServlet {
             }
         }
         String queryUrl = query.toString();
-        String vnp_SecureHash = Config.hmacSHA512(Config.secretKey, hashData.toString());
+        String vnp_SecureHash = VNPAYConfig.hmacSHA512(VNPAYConfig.secretKey, hashData.toString());
         queryUrl += "&vnp_SecureHash=" + vnp_SecureHash;
-        String paymentUrl = Config.vnp_PayUrl + "?" + queryUrl;
+        String paymentUrl = VNPAYConfig.vnp_PayUrl + "?" + queryUrl;
 //        com.google.gson.JsonObject job = new JsonObject();
 //        job.addProperty("code", "00");
 //        job.addProperty("message", "success");
