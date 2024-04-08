@@ -61,11 +61,14 @@ public class Config {
     }
 
     //Util for VNPAY
-    public static String hashAllFields(Map fields) {
-        List fieldNames = new ArrayList(fields.keySet());
+    @SuppressWarnings("unchecked")
+	public static String hashAllFields(@SuppressWarnings("rawtypes") Map fields) {
+        @SuppressWarnings("rawtypes")
+		List fieldNames = new ArrayList(fields.keySet());
         Collections.sort(fieldNames);
         StringBuilder sb = new StringBuilder();
-        Iterator itr = fieldNames.iterator();
+        @SuppressWarnings("rawtypes")
+		Iterator itr = fieldNames.iterator();
         while (itr.hasNext()) {
             String fieldName = (String) itr.next();
             String fieldValue = (String) fields.get(fieldName);

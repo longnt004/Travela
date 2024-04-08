@@ -10,20 +10,24 @@ public class RRShare {
 	private static Map<Long, HttpServletRequest> reqs = new HashMap<>();
 	private static Map<Long, HttpServletResponse> resps = new HashMap<>();
 	
+	@SuppressWarnings("deprecation")
 	public static void add(HttpServletRequest req, HttpServletResponse resp) {
 		reqs.put(Thread.currentThread().getId(), req);
 		resps.put(Thread.currentThread().getId(), resp);
 	}
 	
+	@SuppressWarnings("deprecation")
 	public static void remove() {
 		reqs.remove(Thread.currentThread().getId());
 		resps.remove(Thread.currentThread().getId());
 	}
 	
+	@SuppressWarnings("deprecation")
 	public static HttpServletRequest request() {
 		return reqs.get(Thread.currentThread().getId());
 	}
 	
+	@SuppressWarnings("deprecation")
 	public static HttpServletResponse response() {
 		return resps.get(Thread.currentThread().getId());	
 	}

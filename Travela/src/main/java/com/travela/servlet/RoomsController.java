@@ -6,16 +6,13 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.beanutils.ConvertUtils;
 import org.apache.commons.beanutils.converters.DateConverter;
-import org.apache.commons.beanutils.converters.DateTimeConverter;
 
 import com.travela.dao.impl.BookingDAOImpl;
 import com.travela.dao.impl.BookingDetailDAOImpl;
@@ -53,6 +50,7 @@ public class RoomsController extends HttpServlet {
 		String method = request.getMethod();
 		String uri = request.getRequestURI();
 		User user = (User) request.getSession().getAttribute("user");
+		@SuppressWarnings("unchecked")
 		Map<String, Map<String, BookingDetail>> allBookingDetailMap = (Map<String, Map<String, BookingDetail>>) request
 				.getSession().getAttribute("allBookingDetailMap");
 		if (allBookingDetailMap == null) {

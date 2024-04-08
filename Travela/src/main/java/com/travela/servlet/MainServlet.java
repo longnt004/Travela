@@ -7,9 +7,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import com.travela.dao.impl.BookingDAOImpl;
 import com.travela.dao.impl.RoomDAOImpl;
-import com.travela.entity.User;
 
 /**
  * Servlet implementation class MainServlet

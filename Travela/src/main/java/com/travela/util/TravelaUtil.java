@@ -2,10 +2,6 @@ package com.travela.util;
 
 import java.util.Properties;
 
-import javax.activation.DataHandler;
-import javax.activation.DataSource;
-import javax.activation.FileDataSource;
-import javax.mail.Message;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
@@ -13,10 +9,6 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
-
-import com.travela.dao.AbstractDAO;
-
-import jakarta.servlet.http.Part;
 
 public class TravelaUtil {
 	public static String GenerateId(String entityId) {
