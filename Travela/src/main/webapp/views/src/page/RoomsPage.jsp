@@ -67,8 +67,7 @@
 					<div class="col-lg-12">
 						<div class="d-flex">
 							<h4 id="totalPrice"></h4>
-							<button onclick="bookingRoom()" class="btn btn-primary ms-auto" data-bs-toggle="modal"
-								data-bs-target="#statusSuccessModal">Booking</button>
+							<button onclick="bookingRoom()" class="btn btn-primary ms-auto">Booking</button>
 						</div>
 					</div>
 				</div>
@@ -76,3 +75,112 @@
 		</div>
 	</div>
 </div>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script type="text/javascript">
+	var totalPrice = ${sessionScope.totalPrice}+0;
+	function reload(url, component) {
+		var xhr = new XMLHttpRequest();
+		xhr.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				component.html(xhr.responseText);
+				$('#totalPrice').html(
+						"Total price: " + totalPrice.toLocaleString('it-IT', {
+							style : 'currency',
+							currency : 'VND'
+						}));
+			}
+		};
+
+		xhr.open("GET", url, true);
+		xhr.send();
+
+	}
+
+	reload("./views/src/component/BookingDetail.jsp", $("#bookingDetail"));
+
+	function addRoom(rId, totalPriceInput) {
+		$.ajax({
+			url : "/Travela/room/add-room?rId=" + rId
+		}).then(
+				function(data) {
+					reload("./views/src/component/BookingDetail.jsp",
+							$("#bookingDetail"));
+					totalPrice += totalPriceInput;
+				})
+	}
+
+	function minusRoom(rId, totalPriceInput) {
+		$.ajax({
+			url : "/Travela/room/minus-room?rId=" + rId
+		}).then(
+				function(data) {
+					reload("./views/src/component/BookingDetail.jsp",
+							$("#bookingDetail"));
+					totalPrice -= totalPriceInput;
+				})
+	}
+
+	function cancelRoom(rId, totalPriceInput, quantityInput) {
+		$.ajax({
+			url : "/Travela/room/cancel-room?rId=" + rId
+		}).then(
+				function(data) {
+					reload("./views/src/component/BookingDetail.jsp",
+							$("#bookingDetail"));
+					totalPrice -= (totalPriceInput * quantityInput);
+				})
+	}
+
+	if (window.location.href.includes("paid=true")) {
+		booking(true);
+		window.history.replaceState(null, null, "/Travela/rooms");
+	}
+
+	function bookingRoom() {
+		var checkIn = $('#checkIn').val();
+		var checkOut = $('#checkOut').val();
+		if (checkIn && checkOut) {
+			paymentModal.show();
+			$('#paymentVNPay').attr('href',
+					"/Travela/payment-vnpay?amount=" + totalPrice)
+			sessionStorage.setItem("checkIn", checkIn);
+			sessionStorage.setItem("checkOut", checkOut);
+		} else {
+			errorBokingModal.show();
+		}
+		/* if ($('#checkIn').val() != "" || $('#check Out').val() != "") {
+			$.ajax(
+					{
+						url : "/Travela/room/booking?checkIn="
+								+ $('#checkIn').val() + "&checkOut="
+								+ $('#checkOut').val()
+					}).then(
+					function(data) {
+						/* reload("./views/src/component/BookingDetail.jsp",
+								$("#bookingDetail"));
+						totalPrice = 0; 
+						paymentModal.show();
+						$('#paymentVNPay').attr('href', "/Travela/payment-vnpay?amount="+totalPrice)
+					})
+		} else {
+			errorBokingModal.show();
+		} */
+	}
+
+	function booking(paid) {
+		$.ajax(
+				{
+					url : "/Travela/room/booking?checkIn="
+							+ sessionStorage.getItem("checkIn") + "&checkOut="
+							+ sessionStorage.getItem("checkOut") + "&paid=" + paid
+				}).then(
+				function(data) {
+					reload("./views/src/component/BookingDetail.jsp",
+							$("#bookingDetail"));
+					totalPrice = 0;
+					successBokingModal.show();
+					sessionStorage.clear();
+				})
+	}
+</script>

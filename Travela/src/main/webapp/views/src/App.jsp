@@ -6,9 +6,18 @@
 <!-- Spinner Start -->
 <%@ include file="./component/Spinner.jsp"%>
 <!-- Spinner End -->
+
 <!-- SuccessModal Start  -->
 <%@ include file="./component/ModalSuccess.jsp"%>
 <!-- SuccessModal End  -->
+
+<!-- Error Start  -->
+<%@ include file="./component/ModalError.jsp"%>
+<!-- ErrorModal End  -->
+
+<!-- Error Start  -->
+<%@ include file="./component/ModalPaymentMethod.jsp"%>
+<!-- ErrorModal End  -->
 
 <c:choose>
 	<c:when test="${empty sessionScope.user}">

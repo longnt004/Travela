@@ -17,7 +17,7 @@
 						stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 " />
                 </svg>
 				<h4 class="text-success mt-3">Oh Yeah!</h4>
-				<p class="mt-3">You have successfully registered and logged in.
+				<p class="mt-3">You have successfully booking.
 				</p>
 				<button type="button" class="btn btn-sm mt-3 btn-success"
 					data-bs-dismiss="modal">Ok</button>

@@ -1,3 +1,4 @@
+<%@page import="com.travela.util.RRShare"%>
 <%@page import="com.travela.entity.User"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="com.travela.entity.BookingDetail"%>
@@ -7,26 +8,27 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
-<%
-User user = (User) request.getSession().getAttribute("user");
-
-Map<String, Map<String, BookingDetail>> allBookingDetailMap = (Map<String, Map<String, BookingDetail>>) request
-		.getSession().getAttribute("allBookingDetailMap");
-if (allBookingDetailMap == null) {
-	allBookingDetailMap = new HashMap<>();
-}
-
-Map<String, BookingDetail> bookingDetailMap = allBookingDetailMap.get(user.getUserId());
-
-int totalPrice = 0;
-if (bookingDetailMap != null) {
-	for (BookingDetail bd : bookingDetailMap.values()) {
-		totalPrice += bd.getQuantityBookingRoom() * bd.getPrice();
+	<%
+	User user = (User) request.getSession().getAttribute("user");
+	
+	Map<String, Map<String, BookingDetail>> allBookingDetailMap = (Map<String, Map<String, BookingDetail>>) request
+			.getSession().getAttribute("allBookingDetailMap");
+	if (allBookingDetailMap == null) {
+		allBookingDetailMap = new HashMap<>();
 	}
-}
-
-request.getSession().setAttribute("totalPrice", totalPrice);
-%>
+	
+	Map<String, BookingDetail> bookingDetailMap = allBookingDetailMap.get(user.getUserId());
+	
+	int totalPrice = 0;
+	if (bookingDetailMap != null) {
+		for (BookingDetail bd : bookingDetailMap.values()) {
+			totalPrice += bd.getQuantityBookingRoom() * bd.getPrice();
+		}
+	}
+	
+	request.getSession().setAttribute("totalPrice", totalPrice);
+	%>
+	
 
 
 <c:if test="<%=bookingDetailMap != null%>">
@@ -42,9 +44,7 @@ request.getSession().setAttribute("totalPrice", totalPrice);
 					<div class="col-lg-7">
 						<div class="d-flex flex-column justify-content-between px-2">
 							<div>
-								<h5>
-									${bookingRoom.value.room.title}
-									</h6>
+								<h5>${bookingRoom.value.room.title}</h5>
 							</div>
 							<div class="align-self-end">
 								<h6>

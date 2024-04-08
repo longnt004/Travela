@@ -29,7 +29,9 @@
 					new CarouselItem("./views/src/img/bg3.jpg", "You Like To Go?")));%>
 
 	<div id="carouselId" class="carousel slide" data-bs-ride="carousel">
+	
 		<ol class="carousel-indicators">
+		
 			<c:forEach var="carouselItem" items="<%=listCarouselItem%>"
 				varStatus="loop">
 

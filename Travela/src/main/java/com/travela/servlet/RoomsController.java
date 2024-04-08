@@ -114,6 +114,7 @@ public class RoomsController extends HttpServlet {
 					booking.setBookingId(TravelaUtil.GenerateId(bookingDAOImpl.findLastBooking().getBookingId()));
 					booking.setUser((User) request.getSession().getAttribute("user"));
 					booking.setBookingDetails(new ArrayList<BookingDetail>(bookingDetailMap.values()));
+					booking.setPaymentStatus(Boolean.parseBoolean(request.getParameter("paid")));
 					bookingDAOImpl.create(booking);
 					for (BookingDetail bd : bookingDetailMap.values()) {
 						bd.setBookingDetailId(TravelaUtil

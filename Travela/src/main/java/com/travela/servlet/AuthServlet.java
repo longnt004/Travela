@@ -34,32 +34,44 @@ public class AuthServlet extends HttpServlet {
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String uri = request.getRequestURI();
-		String method = request.getMethod();
-		if (method.toLowerCase().contains("get")) {
-			String authViews = "/views/src/page/auth/Login.jsp";
-			if (uri.contains("login")) {
-				request.setAttribute("authViews", "/views/src/page/auth/Login.jsp");
-			} else if (uri.contains("register")) {
-				authViews = "/views/src/page/auth/Register.jsp";
-			} else if (uri.contains("forgotPassword")) {
-				if (request.getParameter("vc") != null) {
-					request.setAttribute("isValidate", "isValidate");
-				}
-				authViews = "/views/src/page/auth/ForgotPass.jsp";
+		if (uri.contains("login")) {
+			doLogin(request, response);
+		} else if (uri.contains("register")) {
+			doRegister(request, response);
+		} else if (uri.contains("forgotPassword")) {
+			if (request.getParameter("vc") != null) {
+				request.setAttribute("isValidate", "isValidate");
 			}
-			request.setAttribute("authViews", authViews);
-			doGet(request, response);
-		} else {
-			if (uri.contains("login")) {
-				doLogin(request, response);
-			} else if (uri.contains("register")) {
-				doRegister(request, response);
-			} else if (uri.contains("forgotPassword")) {
-				doForgotPassword(request, response);
-			} else if (uri.contains("logout")) {
-				doLogout(request, response);
-			}
+			doForgotPassword(request, response);
+		} else if (uri.contains("logout")) {
+			doLogout(request, response);
 		}
+//		String method = request.getMethod();
+//		if (method.toLowerCase().contains("get")) {
+//			String authViews = "/views/src/page/auth/Login.jsp";
+//			if (uri.contains("login")) {
+//				request.setAttribute("authViews", "/views/src/page/auth/Login.jsp");
+//			} else if (uri.contains("register")) {
+//				authViews = "/views/src/page/auth/Register.jsp";
+//			} else if (uri.contains("forgotPassword")) {
+//				if (request.getParameter("vc") != null) {
+//					request.setAttribute("isValidate", "isValidate");
+//				}
+//				authViews = "/views/src/page/auth/ForgotPass.jsp";
+//			}
+//			request.setAttribute("authViews", authViews);
+//			doGet(request, response);
+//		} else {
+//			if (uri.contains("login")) {
+//				doLogin(request, response);
+//			} else if (uri.contains("register")) {
+//				doRegister(request, response);
+//			} else if (uri.contains("forgotPassword")) {
+//				doForgotPassword(request, response);
+//			} else if (uri.contains("logout")) {
+//				doLogout(request, response);
+//			}
+//		}
 	}
 
 	@Override
@@ -70,16 +82,22 @@ public class AuthServlet extends HttpServlet {
 	}
 
 	public void doLogin(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-		String email = request.getParameter("email");
-		String password = request.getParameter("password");
+		String method = request.getMethod();
+		if (method.equalsIgnoreCase("Post")) {
+			String email = request.getParameter("email");
+			String password = request.getParameter("password");
 
-		User loginUser = userDAOImpl.findByEmailAndPassword(email, password);
+			User loginUser = userDAOImpl.findByEmailAndPassword(email, password);
 
-		if (loginUser != null) {
-			request.getSession().setAttribute("user", loginUser);
-			response.sendRedirect("/Travela/home");
-		} else if (loginUser == null) {
-			request.setAttribute("wrongMessage", "Something wrong please check again your form!!!");
+			if (loginUser != null) {
+				request.getSession().setAttribute("user", loginUser);
+				response.sendRedirect("/Travela/home");
+			} else if (loginUser == null) {
+				request.setAttribute("wrongMessage", "Something wrong please check again your form!!!");
+				request.setAttribute("authViews", "/views/src/page/auth/Login.jsp");
+				doGet(request, response);
+			}
+		} else {
 			request.setAttribute("authViews", "/views/src/page/auth/Login.jsp");
 			doGet(request, response);
 		}
@@ -87,38 +105,48 @@ public class AuthServlet extends HttpServlet {
 
 	public void doRegister(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
-		User registerUser = new User();
+		String method = request.getMethod();
+		if (method.equalsIgnoreCase("Post")) {
+			User registerUser = new User();
 
-		try {
-			BeanUtils.populate(registerUser, request.getParameterMap());
-			registerUser.setUserId(TravelaUtil.GenerateId(userDAOImpl.findLastOne().getUserId()));
-		} catch (IllegalAccessException | InvocationTargetException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			try {
+				BeanUtils.populate(registerUser, request.getParameterMap());
+				registerUser.setUserId(TravelaUtil.GenerateId(userDAOImpl.findLastOne().getUserId()));
+			} catch (IllegalAccessException | InvocationTargetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
-		if (userDAOImpl.create(registerUser) != null) {
-			request.getSession().setAttribute("user", registerUser);
-			response.sendRedirect("/Travela/home");
+			if (userDAOImpl.create(registerUser) != null) {
+				request.getSession().setAttribute("user", registerUser);
+				response.sendRedirect("/Travela/home");
+			} else {
+				request.setAttribute("wrongMessage", "Something wrong please check again your form!!!");
+				request.setAttribute("authViews", "/views/src/page/auth/Register.jsp");
+				doGet(request, response);
+			}
 		} else {
-			request.setAttribute("wrongMessage", "Something wrong please check again your form!!!");
-			request.setAttribute("RegisterPage", true);
+			request.setAttribute("authViews", "/views/src/page/auth/Register.jsp");
 			doGet(request, response);
 		}
 	}
 
 	public void doForgotPassword(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
-		String forgotEmail = request.getParameter("email");
-		System.out.println(forgotEmail);
-		TravelaUtil.SendMail(forgotEmail);
-		request.setAttribute("ForgotPassword", true);
+		String method = request.getMethod();
+		if (method.equalsIgnoreCase("Post")) {
+			String forgotEmail = request.getParameter("email");
+			System.out.println(forgotEmail);
+			TravelaUtil.SendMail(forgotEmail);
+			request.setAttribute("ForgotPassword", true);
+		}
+		request.setAttribute("authViews", "/views/src/page/auth/ForgotPass.jsp");
 		doGet(request, response);
 	}
 
 	public void doLogout(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
 		request.getSession().setAttribute("user", null);
-		doGet(request, response);
+		response.sendRedirect("/Travela/home");
 	}
 }

@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <div class="container-fluid footer py-5">
-<form method="post">
-	<button formaction="/Travela/logout">a</button>
-</form>
 	<div class="container py-5">
 		<div class="row g-5">
 			<div class="col-md-6 col-lg-6 col-xl-3">

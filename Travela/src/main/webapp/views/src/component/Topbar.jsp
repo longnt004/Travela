@@ -31,7 +31,11 @@
 							class="fa fa-home me-2"></i> My Dashboard</small></a>
 					<div class="dropdown-menu rounded">
 						<a href="/Travela/profile" class="dropdown-item"><i
-							class="fas fa-user-alt me-2"></i> My Profile</a> <a href="#"
+							class="fas fa-user-alt me-2"></i> My Profile</a>
+							<a href="/Travela/booking-history"
+							class="dropdown-item"><i class="fas fa-history me-2"></i></i>
+							Booking History</a>
+							 <a href="/Travela/logout"
 							class="dropdown-item"><i class="fas fa-power-off me-2"></i>
 							Log Out</a>
 					</div>

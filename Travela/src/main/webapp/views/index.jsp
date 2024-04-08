@@ -36,11 +36,15 @@
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/js/bootstrap.min.js"></script>
 	<script
-		src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 	<!-- Template Javascript -->
 	<script src="./views/src/js/main.js"></script>
 	<script type="text/javascript">
-		var totalPrice = ${sessionScope.totalPrice}+0;
+		var successBokingModal = new bootstrap.Modal(document.getElementById("statusSuccessModal"), {});
+		var errorBokingModal = new bootstrap.Modal(document.getElementById("statusErrorsModal"), {});
+		var paymentModal = new bootstrap.Modal(document.getElementById("statusPaymentModal"), {});
+		
+		/* var totalPrice = ${sessionScope.totalPrice}+0;
 
 		function reload(url, component) {
 			var xhr = new XMLHttpRequest();
@@ -64,7 +68,6 @@
 		reload("./views/src/component/BookingDetail.jsp", $("#bookingDetail"));
 
 		function addRoom(rId, totalPriceInput) {
-			console.log(totalPrice)
 			$.ajax({
 				url : "/Travela/room/add-room?rId=" + rId
 			}).then(
@@ -76,7 +79,6 @@
 		}
 
 		function minusRoom(rId, totalPriceInput) {
-			console.log(rId)
 			$.ajax({
 				url : "/Travela/room/minus-room?rId=" + rId
 			}).then(
@@ -99,15 +101,33 @@
 		}
 
 		function bookingRoom() {
+			if($('#checkIn').val() != "" || $('#checkOut').val() != ""){
+				$.ajax(
+						{
+							url : "/Travela/room/booking?checkIn="
+									+ $('#checkIn').val() + "&checkOut="
+									+ $('#checkOut').val()
+						}).then(
+						function(data) {
+							reload("./views/src/component/BookingDetail.jsp",
+									$("#bookingDetail"));
+							totalPrice = 0;
+							successBokingModal.show();
+						})
+			} else {
+				errorBokingModal.show();
+			}
+		} */
+		
+		/* function detailBooking(bdId) {
 			$.ajax({
-				url : "/Travela/room/booking?checkIn="+$('#checkIn').val()+"&checkOut="+$('#checkOut').val()
+				url : "/Travela/booking-history/detail-booking?bdId=" + bdId
 			}).then(
 					function(data) {
 						reload("./views/src/component/BookingDetail.jsp",
 								$("#bookingDetail"));
-						totalPrice = 0;
 					})
-		}
+		} */
 	</script>
 </body>
 </html>
