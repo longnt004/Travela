@@ -144,6 +144,8 @@
 			paymentModal.show();
 			$('#paymentVNPay').attr('href',
 					"/Travela/payment-vnpay?amount=" + totalPrice)
+			$('#paymentPayPal').attr('href',
+					"/Travela/payment-paypal?amount=" + totalPrice)
 			sessionStorage.setItem("checkIn", checkIn);
 			sessionStorage.setItem("checkOut", checkOut);
 		} else {
@@ -173,7 +175,8 @@
 				{
 					url : "/Travela/room/booking?checkIn="
 							+ sessionStorage.getItem("checkIn") + "&checkOut="
-							+ sessionStorage.getItem("checkOut") + "&paid=" + paid
+							+ sessionStorage.getItem("checkOut") + "&paid="
+							+ paid
 				}).then(
 				function(data) {
 					reload("./views/src/component/BookingDetail.jsp",

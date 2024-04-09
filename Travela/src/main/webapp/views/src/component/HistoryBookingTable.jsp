@@ -7,16 +7,18 @@
 
 <%
 User user = (User) request.getSession().getAttribute("user");
-BookingDAOImpl bookingDAOImpl = new BookingDAOImpl();%>
+BookingDAOImpl bookingDAOImpl = new BookingDAOImpl();
+%>
 
 <table class="table">
 	<thead>
 		<tr>
 			<th scope="col">#</th>
+			<th scope="col">Booking Date</th>
 			<th scope="col">Check In</th>
 			<th scope="col">Check Out</th>
 			<th scope="col">Total Price (VND)</th>
-			<th scope="col">Status</th>
+			<th scope="col" class="text-center">Status</th>
 			<th></th>
 		</tr>
 	</thead>
@@ -33,7 +35,9 @@ BookingDAOImpl bookingDAOImpl = new BookingDAOImpl();%>
 						<tr class="text-dark" style="background: rgba(124, 185, 232, 0.3)">
 					</c:otherwise>
 				</c:choose>
-				<td class="align-middle" scope="row">${loop.index + 1}</td>
+				<td class="align-middle fw-bolder" scope="row">${loop.index + 1}</td>
+				<td class="align-middle"><fmt:formatDate pattern="yyyy-MM-dd"
+						value="${booking.getBookingDate()}" /></td>
 				<td class="align-middle"><fmt:formatDate pattern="yyyy-MM-dd"
 						value="${booking.getCheckIn()}" /></td>
 				<td class="align-middle"><fmt:formatDate pattern="yyyy-MM-dd"
@@ -44,9 +48,9 @@ BookingDAOImpl bookingDAOImpl = new BookingDAOImpl();%>
 					<c:set var="totalPrice"
 						value="${bookingDetail.getPrice() * bookingDetail. getQuantityBookingRoom() + totalPrice}" />
 				</c:forEach>
-				<td class="align-middle"><fmt:formatNumber type="number"
+				<td class="align-middle text-end fw-bold"><fmt:formatNumber type="number"
 						pattern="###,###" value="${totalPrice}" /></td>
-				<td class="align-middle"><c:choose>
+				<td class="align-middle text-center" ><c:choose>
 						<c:when test="${booking.getStatus() eq 'PENDING' }">
 							<span class="badge bg-warning text-dark p-2">${booking.getStatus()}</span>
 						</c:when>

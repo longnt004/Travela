@@ -50,7 +50,7 @@ public class BookingDAOImpl extends AbstractDAO<Booking> implements BookingDAO {
 	@Override
 	public List<Booking> findByUserId(String id) {
 		// TODO Auto-generated method stub
-		String jpql = "Select b From Booking b Where b.user.userId = ?0";
+		String jpql = "Select b From Booking b Where b.user.userId = ?0 and b.status Not Like 'CANCEL'";
 		return super.findMany(Booking.class, jpql, id);
 	}
 
